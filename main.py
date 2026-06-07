@@ -1,6 +1,6 @@
-# Import functions from task_utils and validation packages
-from task_utils import add_task, mark_task_as_complete, view_pending_tasks, calculate_progress
-from validation import validate_task_title, validate_task_description, validate_due_date
+# Import functions from task_manager.task_utils package
+from task_manager.task_utils import add_task, mark_task_as_complete, view_pending_tasks, calculate_progress
+from task_manager.validation import validate_task_title, validate_task_description, validate_due_date
 
 # Define the main function
 def main():
@@ -15,7 +15,6 @@ def main():
 
         if choice == "1":
             try:
-                # Get user input
                 title = input("Enter task title: ")
                 validate_task_title(title)
                 
@@ -25,10 +24,8 @@ def main():
                 due_date = input("Enter due date (YYYY-MM-DD): ")
                 validate_due_date(due_date)
                 
-                # If all validations pass, add the task
                 add_task(title, description, due_date)
             except ValueError as e:
-                # Catches the errors raised in validation.py
                 print(f"Error: {e}")
                 
         elif choice == "2":
@@ -48,7 +45,6 @@ def main():
         elif choice == "5":
             print("Exiting the program...")
             break
-            
         else:
             print("Invalid choice. Please try again.")
         
